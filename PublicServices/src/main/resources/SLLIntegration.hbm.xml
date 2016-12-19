@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name="tieto.at.DomainEntities.SllIntegration" table="sllappintegration">
+      <meta attribute="class-description">
+         This class contains the SLL Application Integration Details. 
+      </meta>
+      <id name="Id" type="int" column="id">
+         <generator class="native"/>
+      </id>
+      <property name="appid" column="appid" type="string" />
+      <property name="processid" column="processid" type="string"/>
+      <property name="inboundappid" column="inboundappid" type="string"/>
+      <property name="outboundappid" column="outboundappid" type="string"/>
+      <property name="integrationdescription" column="integrationdescription" type="string"/>
+      <property name="toolused" column="toolused" type="string"/>
+      <property name="datafiles" column="datafiles" type="string"/>
+      <property name="appserverid" column="appserverid" type="string"/>   
+   </class>
+</hibernate-mapping>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+
+   <class name="tieto.at.DomainEntities.SllApplication" table="sllapplist">
+      <meta attribute="class-description">
+         This class contains the SLL Application detail. 
+      </meta>
+      <id name="appid" type="string" column="appid">
+         <!-- <generator class="native"/> -->
+      </id>
+       <property name="applicationid" column="id" type="int" />
+       
+       <!--  <property name="appid" column="appid" type="string" />-->
+      <property name="businessAreaId" column="sllbusareaid" type="string"/>
+      <!--  <property name="sllAppAreaId" column="sllappareaid" type="int"/>-->
+      <property name="businessObjectId" column="busobjid" type="string"/>
+        <property name="name" column="appname" type="string"/>
+          <property name="priority" column="apppriority" type="string"/>
+            <property name="vendor" column="vendor" type="string"/>
+              <property name="technologies" column="proglanguage" type="string"/>
+                <property name="databases" column="appdatabase" type="string"/>
+                  <property name="enviornment" column="itenv" type="string"/>
+                   <property name="integrationscount" column="integrationscount" type="int"/>
+                   <property name="incidentcounts" column="incidentscount" type="int"/>
+                    <property name="problemcount" column="problemcount" type="int"/>
+                    <property name="changescount" column="changescount" type="int"/>
+                    <property name="relasesperyear" column="releasesperyear" type="int"/>
+                    <property name="description" column="appdescription" type="string"/>
+                    
+		<!--<one-to-one name="area" class="tieto.at.DomainEntities.SllArea"
+			cascade="none" property-ref="areaid" foreign-key="sllAppAreaId">
+			
+	</one-to-one>-->
+	
+	<many-to-one name="area" column="sllappareaid"  cascade="none"
+       class="tieto.at.DomainEntities.SllArea" not-null="true" lazy="false" />
+			
+	 <set name="integrations" table="sllappintegration"
+				lazy="false" inverse="false" fetch="select" cascade="none">
+            <key>
+                <column name="appid" not-null="true" />
+            </key>
+            <one-to-many class="tieto.at.DomainEntities.SllIntegration"/>
+     </set>
+        
+	<!-- <list name="integrations" cascade="none" lazy="true" fetch="select" inverse="false" table="integrations">
+         <key column="appid"/>
+         <list-index column="id"/>
+       <one-to-many class="tieto.at.DomainEntities.SllIntegration" />
+     </list> -->
+   </class>
+</hibernate-mapping>

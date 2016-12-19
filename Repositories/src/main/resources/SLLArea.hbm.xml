@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+
+   <class name="tieto.at.DomainEntities.SllArea" table="sllarea">
+      <meta attribute="class-description">
+         This class contains the SLL Application Area. 
+      </meta>
+      <id name="areaid" type="int" column="Areaid">         
+      </id>
+       <property name="client" column="client" type="string" />
+      <property name="areaCluster" column="areacluster" type="string"/>
+      <property name="area" column="apparea" type="string"/>
+   </class>
+</hibernate-mapping>
